@@ -49,6 +49,12 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
     new_building = models.BooleanField('Новостройка', blank=True, null=True)
+    liked_by = models.ManyToManyField(
+        User,
+        related_name='liked_flat',
+        verbose_name='Кто лайкнул',
+        blank=True
+    )
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
@@ -69,3 +75,4 @@ class Complaint(models.Model):
 
     def __str__(self):
         return f'Жалоба на квартиру по адресу: {self.flat}'
+
