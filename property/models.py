@@ -34,7 +34,7 @@ class Flat(models.Model):
         'Количество комнат в квартире',
         db_index=True)
     living_area = models.IntegerField(
-        'количество жилых кв.метров',
+        'Количество жилых кв.метров',
         null=True,
         blank=True,
         db_index=True)
