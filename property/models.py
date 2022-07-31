@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -49,8 +49,14 @@ class Flat(models.Model):
         'Год постройки здания',
         null=True,
         blank=True,
-        db_index=True)
-    new_building = models.BooleanField('Новостройка', blank=True, null=True, db_index=True)
+        db_index=True
+    )
+    new_building = models.BooleanField(
+        'Новостройка',
+        blank=True,
+        null=True,
+        db_index=True
+    )
     liked_by = models.ManyToManyField(
         User,
         related_name='liked_flat',
@@ -80,8 +86,16 @@ class Complaint(models.Model):
 
 
 class Owner(models.Model):
-    full_name = models.CharField('ФИО владельца', max_length=200, db_index=True)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20, db_index=True)
+    full_name = models.CharField(
+        'ФИО владельца',
+        max_length=200,
+        db_index=True
+    )
+    owners_phonenumber = models.CharField(
+        'Номер владельца',
+        max_length=20,
+        db_index=True
+    )
     owner_pure_phone = PhoneNumberField(blank=True, null=True, db_index=True)
     flats = models.ManyToManyField(
         Flat,
